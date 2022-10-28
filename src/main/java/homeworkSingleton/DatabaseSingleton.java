@@ -4,15 +4,13 @@ import java.sql.*;
 public class DatabaseSingleton {
     private static DatabaseSingleton instance;
     public Connection mysqlConnection;
-    String user = "root";
-    String password = "Villarroel1206";
 
     private DatabaseSingleton(){
         try {
             this.mysqlConnection= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/rodrimock",user,password);
+                    "jdbc:mysql://localhost:3306/rodrimock", ConnectionConstants.user, ConnectionConstants.password);
         } catch (SQLException e) {
-            System.out.println("There is no connection to the database: User = " + user + " Password = " + password);
+            System.out.println("There is no connection to the MYSQL database: User " + e.getMessage());
         }
     }
 
